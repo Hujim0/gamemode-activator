@@ -7,3 +7,7 @@ obj/
 .vscode/
 *.user
 *.suo
+
+# Runtime snapshots
+gamestatus
+gamestatus.tmp
