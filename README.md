@@ -62,6 +62,23 @@ make
 make CC=/path/to/llvm-mingw/bin/x86_64-w64-mingw32-clang
 ```
 
+To cross compile in Docker without installing MinGW-w64 on the host, use Docker
+Buildx:
+
+```sh
+make build-docker
+```
+
+This builds the Windows x64 executable and its blacklist data file into
+`dist-docker/`. Docker is only the build environment; the result is a regular
+Windows executable, not a containerized service. Existing files under `dist/`
+are left as-is. The default builder platform is Linux x64; to run the builder on
+another Docker architecture, use `make build-docker DOCKER_PLATFORM=linux/arm64`.
+The builder uses the official Debian Trixie image and its
+[MinGW-w64 x64 POSIX C compiler package](https://packages.debian.org/trixie/gcc-mingw-w64-x86-64-posix).
+The scratch output stage exports only the executable and blacklist file; no
+runtime image is created.
+
 Manual build from the repository root:
 
 ```sh

@@ -2,6 +2,7 @@
 *.o
 *.log
 dist/
+dist-docker/
 obj/
 .vs/
 .vscode/
